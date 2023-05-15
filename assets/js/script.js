@@ -1,7 +1,8 @@
 //wraps the js
 $(function () {
+  //this creates the var that i use to get day and date from day.js
   var currentDayData = dayjs().format("dddd, MMMM D")
-  console.log("hello");
+  //this texts the functionality for me
   console.log(currentDayData);
 
   // TODO: Add a listener for click events on the save button. This code should
@@ -24,8 +25,18 @@ $(function () {
   // JQuery to display Current Day obtained from Day.js to html container #currentDay
   $("#currentDay").text(currentDayData);
   
+  //event listner made with JQuery to fire from save button
   $(".saveBtn").on("click", function(saveTask) {
-    console.log("You saved me!")
+    //this pulls the user's text input from the planner's textarea
+    var userInput = $(this).siblings(".description").val();
+    //this identifies what time block this input was put in
+    var hourId = $(this).parent().attr("id");
+    //this sets the hour and input to local storage
+    localStorage.setItem(hourId, userInput);
+    //this creates the var to get the input
+    var planInput = localStorage.getItem(hourId); 
+    // this prints to console so that I can test functionality
+    console.log(hourId + ": " + planInput);
   });
 });
 
