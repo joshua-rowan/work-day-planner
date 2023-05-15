@@ -23,5 +23,9 @@ $(function () {
   //
   // JQuery to display Current Day obtained from Day.js to html container #currentDay
   $("#currentDay").text(currentDayData);
+  
+  $(".saveBtn").on("click", function(saveTask) {
+    console.log("You saved me!")
+  });
 });
 
