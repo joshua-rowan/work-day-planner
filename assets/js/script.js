@@ -12,8 +12,11 @@ $(function () {
   
   //function to seek rows in the past
   $(".row").each(function() {
+    //states what row to look at and allows all rows to be evaluated b/c of each function
     var rowHour = parseInt($(this).attr("id").split("-")[1]);
+    // if statement to identify if this is or isn't in the past
     if (rowHour < currentHour) {
+      //use "this" statement for flexibility and ability to apply class to multiple rows
       $(this).addClass("past");
     }
   })
@@ -24,15 +27,13 @@ $(function () {
   //JQuery to seek all future hours and apply future class
   $(".row").each(function() {
     var rowHour = parseInt($(this).attr("id").split("-")[1]);
+    // if statement to identify future rows
     if (rowHour > currentHour) {
+      // like the past function this statement applies future class to correct rows
       $(this).addClass("future");
     }
   })
 
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  //
   // JQuery to display Current Day obtained from Day.js to html container #currentDay
   $("#currentDay").text(currentDayData);
   
@@ -48,6 +49,16 @@ $(function () {
     var planInput = localStorage.getItem(hourId); 
     // this prints to console so that I can test functionality
     console.log(hourId + ": " + planInput);
+  });
+
+  //This will retrieve previously stored user input from local storage and display it in rows
+  $(".row").each(function() {
+    //var to identify the time of the user input
+    var hourId = $(this).attr("id");
+    //var to identify the user's text
+    var userInput = localStorage.getItem(hourId);
+    //JQuery to insert the text onto the appropriate row
+    $(this).find(".description").val(userInput);
   });
 });
 
