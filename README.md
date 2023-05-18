@@ -8,7 +8,7 @@ This project is a simple calendar application that allows a user to save events 
 https://joshua-rowan.github.io/work-day-planner/
 
 ## Screenshot
-
+joshua-rowan.github.io_work-day-planner_.png
 ## Scenario
 
 AS AN employee with a busy schedule
